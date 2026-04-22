@@ -14,13 +14,20 @@
 #include <unistd.h>
 
 //place function prototypes here
+
+
 void function13AG(void);
+
+void JLeyva(void);
+
+void fish(void);
 
 void printStudent30(void);
 
 void printInitialsAjewett(void);
 
 void jgFun(void);
+
 
 
 
@@ -92,6 +99,7 @@ int main(int argc, char *argv[])
 			}
 			case 10:
 			{
+				fish();
 				puts("room10");
 				break;
 			}
@@ -320,7 +328,8 @@ int main(int argc, char *argv[])
 			}
 			case 56:
                         {
-                                puts("room56");
+                                JLeyva();
+				puts("room56");
                                 break;
                         }
 			case 57:
@@ -437,6 +446,16 @@ int main(int argc, char *argv[])
 void function13AG(void)
 {
 	printf("AG\n");
+}
+
+void JLeyva(void)
+{
+	printf("JL");
+}
+
+void fish(void) 
+{
+	printf("JF");
 }
 
 void printStudent30(void)
