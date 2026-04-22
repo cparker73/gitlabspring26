@@ -15,7 +15,12 @@
 
 //place function prototypes here
 
+
 void printInitialsAjewett(void);
+
+void jgFun(void);
+
+
 
 
 
@@ -240,6 +245,7 @@ int main(int argc, char *argv[])
 			}
 			case 42:
 			{
+				jgFun();
 				puts("room42");
 				break;
 			}
@@ -428,4 +434,9 @@ int main(int argc, char *argv[])
 void printInitialsAjewett(void)
 {
 	printf("AJ\n");
+}
+void jgFun(void)
+{
+	printf("JGB");	
+
 }
