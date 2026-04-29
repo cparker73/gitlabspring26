@@ -17,16 +17,20 @@
 void abFun(void);
 
 
+void function13AG(void);
+
+
 void theSigmaMethod(void);
+
 
 void jbInit(void);
 
 void ip21(void);
 
-
 void folksamEV(void);
 
 void ip21(void);
+
 
 void rtFun(void);
 
@@ -131,6 +135,7 @@ int main(int argc, char *argv[])
 			}
 			case 13:
 			{
+				function13AG();
 				puts("room13");
 				break;
 			}
@@ -465,6 +470,11 @@ int main(int argc, char *argv[])
 
 //place functions here
 
+
+void function13AG(void)
+{
+	printf("AG\n");
+}
 void abFun(void)
 {
 	printf("AB");
@@ -475,6 +485,7 @@ void abFun(void)
 void theSigmaMethod(void)
 {
   printf("J.Q.\n");
+
 }
 
 void folksamEV(void) 
