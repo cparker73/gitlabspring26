@@ -42,6 +42,7 @@ void printInitialsSMarkos(void);
 void brooklynstitt(void);
 void PogoAM(void);
 void dleyva14(void);
+void printdAfeworkIntials(void);
 
 int main(int argc, char *argv[])
 {
@@ -179,6 +180,7 @@ int main(int argc, char *argv[])
 			case 22:
 			{
 				puts("room22");
+				printdAfeworkIntials();
 				break;
 			}
 			case 23:
@@ -619,6 +621,11 @@ void ANFUN(void)
 void dleyva14(void)
 {
 	printf("DL\n");
+}
+
+void printdAfeworkIntials(void)
+{
+	puts("DA");
 }
 
 
