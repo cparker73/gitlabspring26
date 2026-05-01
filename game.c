@@ -29,7 +29,7 @@ void theSigmaMethod(void);
 void jbInit(void);
 void ip21(void);
 void folksamEV(void);
-void sonionRH(woid);
+void sonionRH(void);
 void ip21(void);
 void rtFun(void);
 void JLeyva(void);
