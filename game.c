@@ -90,7 +90,7 @@ void nhfun(void);
 void printInitialsAngelM(void);
 
 void dGMyName(void);
-void jkFun(void); 
+void jkRoom41(void); 
 
 
 
@@ -349,8 +349,7 @@ int main(int argc, char *argv[])
 			}
 			case 41:
 			{
-				jkFun();
-				puts("room41");
+				jkRoom41();
 				break;
 			}
 			case 42:
@@ -1682,9 +1681,72 @@ void RT_playCupRound(void)
     }
 }
 
-void jkFun(void)
+
+void jkRoom41(void)
 {
-    printf("PSG\n");
+    int choice = 0;
+    int running = 1;
+    int score = 0;
+    char *players[3] = {"Mbappe", "Dembele", "Hakimi"};
+
+    printf("\nYou enter room 41 and appear inside a soccer stadium!\n");
+    printf("PSG needs your help to win the match.\n");
+
+    while(running)
+    {
+        printf("\nChoose your move:\n");
+        printf("1. Pass the ball\n");
+        printf("2. Take a shot\n");
+        printf("3. Check teammates\n");
+        printf("4. Defend\n");
+        printf("5. Leave stadium\n");
+        printf("Enter choice: ");
+
+        scanf("%d", &choice);
+
+        switch(choice)
+        {
+            case 1:
+                printf("You pass to %s.\n", players[rand() % 3]);
+                break;
+
+            case 2:
+            {
+                int shot = rand() % 2;
+                if(shot == 1)
+                {
+                    printf("GOAL! PSG scores!\n");
+                    score++;
+                }
+                else
+                {
+                    printf("Missed shot!\n");
+                }
+                printf("Score: %d\n", score);
+                break;
+            }
+
+            case 3:
+                printf("Teammates: %s, %s, %s\n", players[0], players[1], players[2]);
+                break;
+
+            case 4:
+            {
+                int defense = rand() % 2;
+                if(defense == 1)
+                    printf("Great defense!\n");
+                else
+                    printf("Opponent gets through!\n");
+                break;
+            }
+
+            case 5:
+                printf("You leave the stadium.\n");
+                running = 0;
+                break;
+
+            default:
+                printf("Invalid choice.\n");
+        }
+    }
 }
-
-
