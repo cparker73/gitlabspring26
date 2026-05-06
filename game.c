@@ -58,6 +58,8 @@ void room49game(void);
 void dleyva14(void);
 
 void sgarcia6(void);
+void GuckMan(void);
+
 void AMaderaFun(void);
 void CAYfrog(void);
 void afFun(void);  
@@ -68,6 +70,7 @@ void kwillett48(void);
 void ncInitial(void);
 void mtorres(void);
 void hOsuna(void);
+
 
 
 int main(int argc, char *argv[])
@@ -235,6 +238,7 @@ int main(int argc, char *argv[])
 			}
 			case 26:
 			{
+				GuckMan();
 				puts("room26");
 				break;
 			}
@@ -712,6 +716,11 @@ void sgarcia6(void)
    {
        printf("SG");
    }
+void GuckMan(void)
+{
+	printf("EG\n");
+}
+
 void CAYfrog(void)
 {
 	printf("CAY");
@@ -748,6 +757,7 @@ void hOsuna(void)
 {
         printf("\nHAO\n");
 }
+
 
 
 
