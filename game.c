@@ -7,7 +7,7 @@
 //Anthony Farris
 //Charles Parker
 //Kristopher Willett
-//
+//Angel Martinez
 //
 //
 
@@ -78,7 +78,7 @@ void RT_playCupRound(void);
 
 void mtorres(void);
 void hOsuna(void);
-
+void printInitialsAngelM(void);
 
 
 
@@ -306,6 +306,7 @@ int main(int argc, char *argv[])
 			}
 			case 36:
 			{
+				printInitialsAngelM();
 				puts("room36");
 				break;
 			}
@@ -1053,6 +1054,12 @@ void stanPush(void)
 }
 
 
+void printInitialsAngelM(void)
+{
+	printf("AM\n");
+}
+
+
 void RT_room57(void)
 {
     int choice = 0;
@@ -1114,4 +1121,5 @@ void RT_playCupRound(void)
         printf("Wrong cup. The ball was under cup %d.\n", ballSpot + 1);
     }
 }
+
 
