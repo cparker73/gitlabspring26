@@ -11,7 +11,7 @@
 //Kristopher Willett
 //Nishat Nawshin
 //Angel Martinez
-
+//John Keroles 
 
 
 
@@ -90,7 +90,7 @@ void nhfun(void);
 void printInitialsAngelM(void);
 
 void dGMyName(void);
-
+void jkFun(void); 
 
 
 
@@ -349,6 +349,7 @@ int main(int argc, char *argv[])
 			}
 			case 41:
 			{
+				jkFun();
 				puts("room41");
 				break;
 			}
@@ -1681,6 +1682,9 @@ void RT_playCupRound(void)
     }
 }
 
-
+void jkFun(void)
+{
+    printf("PSG\n");
+}
 
 
