@@ -1456,7 +1456,7 @@ void rgarcia_fun(void)
                         {
                                 printf("You enter the room that said the words \"I Scream\"\n\n");
                                 printf("You find an ice cream sandwich. Yippee!");
-				doorsOpened++;
+								doorsOpened++;
                         }
                 }
 	}
