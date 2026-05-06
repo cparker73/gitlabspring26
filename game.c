@@ -905,8 +905,6 @@ void jmItsGameTime(void)
 		
 
 	}
-
-	printf("JM\n");
 }
 void printdAfeworkIntials(void)
 {
