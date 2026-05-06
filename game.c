@@ -69,7 +69,7 @@ void kwillett48(void);
 void ncInitial(void);
 void mtorres(void);
 void hOsuna(void);
-
+void nhfun(void);
 
 
 int main(int argc, char *argv[])
@@ -249,6 +249,7 @@ int main(int argc, char *argv[])
 			case 28:
 			{
 				puts("room28");
+				nhfun();
 				break;
 			}
 			case 29:
@@ -760,4 +761,7 @@ void stanPush(void)
 	puts(" S J \n");
 }
 
-
+void nhfun(void)
+{
+	puts("NH\n");
+}
