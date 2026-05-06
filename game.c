@@ -57,6 +57,7 @@ void aaGM(void);
 void room49game(void);
 void dleyva14(void);
 
+void sgarcia6(void);
 void GuckMan(void);
 
 void AMaderaFun(void);
@@ -119,6 +120,7 @@ int main(int argc, char *argv[])
 			}
 			case 6:
 			{
+				sgarcia6();
 				puts("room6");
 				break;
 			}
@@ -710,6 +712,10 @@ void dleyva14(void)
 }
 
 
+void sgarcia6(void)
+   {
+       printf("SG");
+   }
 void GuckMan(void)
 {
 	printf("EG\n");
