@@ -13,6 +13,7 @@
 //Angel Martinez
 //John Keroles 
 //Dagmawe (Bobby) Afework
+//Danya Leyva
 // Neal Hannon
 //Alejandro Garcia
 //Nathaniel Corteza
@@ -104,8 +105,12 @@ bool televisionTroubles(int max_player_HP, int max_enemy_HP, int max_numOfPotion
 bool laughingLaboratory(int max_player_HP, int max_enemy_HP, int max_numOfPotions);
 bool spaceSpectacle(int max_player_HP, int max_enemy_HP, int max_numOfPotions);
 
+bool getChoiceDL(void);
+
+
 void jkFun(void);
 void jkRoom41(void); 
+
 
 
 
@@ -3001,7 +3006,160 @@ void ANFUN(void)
 }
 void dleyva14(void)
 {
-	printf("DL\n");
+	bool choice;
+    int health = 3;
+    bool dragonAppears;
+    char supplies[4][20] = {"torch", "healing potion", "iron sword", "magic horn"};
+
+    printf("\n--- The Dragon Trial: Fire Escape ---\n");
+    printf("You enter the room, but the stone door slams behind you.\n");
+    printf("The room changes into a glowing castle hallway filled with smoke and fire.\n");
+    printf("You hear wings, claws scraping the floor, and a dragon breathing nearby.\n");
+
+    // Decision 1: true means option 1, false means option 2
+    printf("\nDecision 1: What do you do first?\n");
+    printf("1. Search the room for supplies.\n");
+    printf("2. Run straight into the castle hallway.\n");
+    choice = getChoiceDL();
+
+    if (choice)
+    {
+        printf("You search the room and find a %s and a %s.\n", supplies[0], supplies[1]);
+        health++;
+    }
+    else
+    {
+        printf("You run into the hallway, but trip over broken stone. You lose 1 health.\n");
+        health--;
+    }
+
+    // Decision 2
+    printf("\nDecision 2: Choose something to carry.\n");
+    printf("1. Iron sword\n");
+    printf("2. Magic horn\n");
+    choice = getChoiceDL();
+
+    if (choice)
+    {
+        printf("You grab the %s. It can help you defend yourself.\n", supplies[2]);
+    }
+    else
+    {
+        printf("You grab the %s. Maybe you can try to call for help later.\n", supplies[3]);
+    }
+
+    // Random boolean value decides if the player gets lucky
+    dragonAppears = rand() % 2 == 0;
+
+    // Decision 3
+    printf("\nDecision 3: The dragon turns the corner.\n");
+    printf("1. Hide behind a stone pillar\n");
+    printf("2. Fight your way past it\n");
+    choice = getChoiceDL();
+
+    if (choice)
+    {
+        if (dragonAppears)
+        {
+            printf("The dragon walks past you, and you survive without losing health.\n");
+        }
+        else
+        {
+            printf("The dragon hears you moving and burns your arm with fire. You lose 1 health.\n");
+            health--;
+        }
+    }
+    else
+    {
+        if (dragonAppears)
+        {
+            printf("You strike the dragon and escape down the hallway.\n");
+        }
+        else
+        {
+            printf("The dragon swings its tail before you escape. You lose 1 health.\n");
+            health--;
+        }
+    }
+
+    // Decision 4
+    printf("\nDecision 4: You reach the end of the castle hallway.\n");
+    printf("1. Take the stone stairs\n");
+    printf("2. Cross the burning bridge\n");
+    choice = getChoiceDL();
+
+    if (choice)
+    {
+        printf("The stone stairs are dark but safer. You move quietly.\n");
+    }
+    else
+    {
+        printf("The burning bridge cracks under your feet, and flames rise around you. You lose 1 health.\n");
+        health--;
+    }
+
+    // Decision 5
+    printf("\nDecision 5: You see the exit, but a trapped knight is calling for help.\n");
+    printf("1. Escape immediately\n");
+    printf("2. Try to rescue the knight\n");
+    choice = getChoiceDL();
+
+    if (choice)
+    {
+        printf("You run through the exit and survive the dragon room.\n");
+    }
+    else
+    {
+        dragonAppears = rand() % 2 == 0;
+
+        if (dragonAppears)
+        {
+            printf("You rescue the knight, and both of you escape safely.\n");
+            health++;
+        }
+        else
+        {
+            printf("You try to help, but the dragon blocks your path. You barely escape and lose 1 health.\n");
+            health--;
+        }
+    }
+
+    printf("\nFinal health: %d\n", health);
+
+    if (health > 0)
+    {
+        printf("YOU SURVIVED THE DRAGON TRIAL!!!\n");
+    }
+    else
+    {
+        printf("YOU ESCAPED, but barely made it out of the dragon's castle alive...\n");
+    }
+
+    printf("\nReturning to the main menu...\n");
+}
+// This function uses a loop to make sure the user enters 1 or 2.
+// It returns true for option 1 and false for option 2.
+bool getChoiceDL(void)
+{
+    int userChoice;
+
+    printf("Enter your choice: ");
+    scanf("%d", &userChoice);
+
+    while (userChoice < 1 || userChoice > 2)
+    {
+        printf("Invalid choice. Enter 1 or 2: ");
+        scanf("%d", &userChoice);
+    }
+
+    if (userChoice == 1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 
