@@ -13,6 +13,7 @@
 //Angel Martinez
 //John Keroles 
 //Dagmawe (Bobby) Afework
+//Alejandro Garcia
 //Nathaniel Corteza
 
 
@@ -1748,11 +1749,235 @@ void dcFun(void)
 
 
 
-
 void function13AG(void)
 {
-	printf("AG\n");
+	printf("\nAG\n"); //ROOM 13, Alejandro Garcia
+	int userChoice = 0;
+	int num1 = rand() % 10; //0 to 9
+	int num2 = rand() % 10; //0 to 9
+	int num3 = rand() % 10; //0 to 9
+	int safeCode[] = {num1,num2,num3}; 
+	int userGuessCode[] = {0,0,0};
+	int loopCounter = 0; //tracks how many times User has looped will matter
+	int userStubborn = 0;
+	bool codeCheck = false;
+
+	reStart: 
+	printf("You entered to room 13 and notice a mysterious book in the middle of the room...\n");
+	printf("You get a feeling like you have been in this room before.\n");
+	printf("You noticted the book in the middle of the room.\n");
+		
+	if(loopCounter == 0)
+	{
+		printf("You opened the book and noticed a note stuck inside on the first page:\n");
+		printf("\tWhoever is reading this note, DO NOT read the past this note.\n");
+		printf("\tYou must trust me or else everything you know will be gone.\n");
+		printf("\tEven if you read the book inside your head the spell will activate an---\n");	
+		printf("The last sentenced is unrecognizable but at least you know a spell will active.\n");
+	}
+
+	printf("Should you read the book or leave it be and head to a different room?\n");
+	printf("Enter '1' for Yes, or '0' for No: "); //choice 1
+	scanf("%d",&userChoice); 
+
+	if(userChoice == 0 && userStubborn == 10) // if user keeps choosing no and no loops
+	{
+		printf("You hear a faint voice say: \n");
+		printf("\tYou were supposed to read the book by now but you are being stubborn.\n");
+		printf("\tIronically you being stubborn for not reading the book set you free but do you really feel acomplished?\n");
+		printf("Enter '1' for Yes, or '0' for No: "); //choice 2
+		scanf("%d",&userChoice);
+		if(userChoice == 8)
+		{
+			printf("\tWait how did you know .\n");
+			goto secret;
+		}
+		else
+		{
+			printf("\tYou do know that your choice doesn't matter here, now get out.\n");
+		}
+		printf("Water starts flooding into the room and waves pushes you out of room 13.\n\n");
+		return;
+	}
+
+	while (userChoice > 1 || userChoice < 0) 
+	{
+		printf("Error: Enter '1' for yes or '0' for no");
+		scanf("%d",&userChoice);
+	}
+
+	if(userChoice == 1)
+	{	
+		printf("Curiosity got the better of you and you decide to continue reading the book.\n");
+		printf("\tWalking, Talking, I'm seeing doubles, Inside these puddles...\n");
+		printf("The book is just random words with simple sentences and gives no clues on what the spell will do.\n");
+		printf("Suddenly a bright red light engulfs the room and you passed out.\n\n");
+		loopCounter++;
+
+		printf("You entered to room 13 and notice a mysterious book in the middle of the room...\n");
+		printf("You get a feeling like you have been-\n");
+		printf("Wait a minute you already have been in this room before.\n"); 
+		printf("You notice there's now a safe in the room with the book.\n");	
+		printf("Your feel a chill down your spine and wonder what's happening to you.\n");
+
+		printf("Should you open the book first or look at the safe first?\n");
+		printf("Enter '1' for Book route, '0' for Safe route: "); //choice 3
+		scanf("%d",&userChoice);
+
+		if(userChoice == 1)
+		{
+			bookRoute:
+			printf("You opened the book and notice there's a new text that you haven't seen before:\n");
+			printf("\tIf you are reading this, that means the spell has gone into affect and you can now restart the same room aka Looping\n");
+			printf("\tHowever the more you loop higher the consuequnce it will lead, I wouldn't recommend going past 5 loops if possible.\n");
+			printf("\tBewarned that you may have looped already which is either caused by you or the room.\n");
+			printf("When an option shows up enter '8' to loop.\n");
+			printf("You closed the book and decided to inspect to the safe.\n");
+			printf("After inspecting the safe you notice that it uses a uses a three single digit passcode to open it.\n");
+		}
+		else if(userChoice == 0)
+		{
+			printf("After inspecting the safe you notice that it uses a uses a three single digit passcode to open it.\n");
+			printf("Should you enter a code or go open the book?\n");
+			printf("Enter '1' to go to Book, '0' to enter a Code: "); //choice 4
+			scanf("%d",&userChoice);
+			if (userChoice == 1)
+			{
+				goto bookRoute;
+			}
+			else if (userChoice == 0)
+			{
+				// does nothing since it goes to solve safe's code either way
+			}
+		}
+		else if (userChoice == 8)
+		{
+			loopCounter++;
+			goto reStart;
+		}
+		else
+		{
+			printf("Error occured backing out of room.\n\n");
+			return;
+		}
+			
+		printf("You decided to go and enter a code into the safe.\n");
+		for(int i = 0; i < 3; i++)
+		{
+			printf("Enter a single digit for the code: ");
+			scanf("%d", &userGuessCode[i]);
+		}
+		codeCheck = true;
+		for(int i = 0; i < 3; i++) // using a for loop to look through whole array
+		{
+			if(safeCode[i] != userGuessCode[i]) //using arrays to check if code is correct
+			{
+				codeCheck = false;
+				break;
+			}
+		}
+		if (codeCheck == true)
+		{
+			printf("The code you enter was correct and you got the safe to open\n");
+			printf("When inspecting the safe you notice two glowing objects and another note.\n");
+			printf("\tCongratulations adventurer you opened the safe as you notice there two glowing orbs.\n");
+			printf("\tYou must choose the correct orb to set escape this room and to gain your memories back.\n");
+			printf("\tOne orb will set you free and the other orb will make you relive this never ending cycle.\n");
+			printf("Should you take the red orb or the blue orb?\n");
+			printf("Enter '1' for Red, '0' for Blue: "); //choice 5
+			scanf("%d",&userChoice);
+			if (userChoice == 8)
+			{
+				printf("You hear a faint voice say, good thinking to recheck every route.\n");
+				loopCounter++;
+				goto reStart;
+			}
+			else if (userChoice == 1)
+			{
+				printf("You touched the red orb and notice nothing happened... or so you thought.\n");
+				printf("A bright red light engulfs the room now you back at the begining where it all started.\n");
+				printf("You noticted the book in the middle of the room.\n");
+
+				if(loopCounter > 5)
+				{
+					printf("Your feel sharp pains from all the looping you have done to your body.\n");
+					printf("You even started to forget who you are.\n");
+					printf("You hear a faint voice say: \t You were so close to reaching the end yet you pushed your limits.\n");
+					printf("\tI really thought that you had it this time but you seem to be forgetting how to escape with your memories intact.\n");
+					printf("\tMaybe the time will be better that if you remember...\n");
+					printf("Water starts flooding into the room and waves pushes you out of room 13.\n");
+					printf("Although you escaped the room you won't ever truly escape if you don't remember.\n");
+					printf("Total Loops occured: %d\n\n", loopCounter);
+					return;
+				}
+				printf("You opened the book and noticed there's no note stuck inside.\n");
+				printf("You inspected the whole to see if another loop has occured.\n");
+				printf("You notice the door is wide open and you finally escape this room.\n");
+				printf("Before leaving you decided to write a note into the book to warn others about the impending doom.\n");\
+				printf("Just as you're about to finishing writing your warning the door starts closeing and you rush out side to explore the other rooms.\n");
+				printf("Total Loops occured: %d\n", loopCounter);
+				if(loopCounter == 2)
+				{
+					printf("WOAH. You got the lowest possible loop count of 2. YOU WON THIS SECRET MESSAGE!!\n\n");
+				}
+				else
+				{
+					printf("(Try to get the lowest loop count of 2, it's possible)\n\n");
+				}
+				return;
+			}
+			else if (userChoice == 0)
+			{
+				printf("You touched the red orb and notice nothing happened... or so you thought.\n");
+				printf("A bright red light engulfs the room and you passed out.\n");
+				loopCounter++;
+				goto reStart;
+			}
+			else
+			{
+				printf("Error occured backing out of room.\n\n");
+				return;
+			}
+		}
+		else
+		{
+			printf("It seems like your code you entered is incorrect but at least nothing bad happ-*BOOM*\n");
+			printf("Just before the the explosion injures you looped yourself back to the begining\n");
+			printf("You hear a faint voice say to check every route.\n\n");
+			loopCounter++;
+			goto reStart;
+		}
+		
+	}
+	else if (userChoice == 0)
+	{
+		printf("You decided it's better to listen to the note's warning\n");
+		printf("But you do wonder who wrote it and what happened to them\n");
+		printf("Before heading out you noticed three numbers on the door which are: ");
+		for(int i = 0; i < 3; i++)
+		{
+			printf("%d ", safeCode[i]);
+		}
+		printf(".\nThe room fills up with gas and you passed out on the cold floor\n\n");
+		loopCounter++;
+		userStubborn = userStubborn + 2;
+		goto reStart;
+	}
+	else if (userChoice == 8)
+	{
+		secret:
+		printf("Woah you found a secret way to get out of the room :O\n");
+		printf("In a way you successfully beaten this room so congrats!!\n\n");
+		return;
+	}
+	else
+	{
+		printf("Error occured backing out of room.\n\n");
+		return;
+	}
 }
+
+
 void abFun(void)
 {
 	printf("AB\n");
