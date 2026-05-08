@@ -13,11 +13,14 @@
 //Angel Martinez
 //John Keroles 
 //Dagmawe (Bobby) Afework
+//YaYu Wang
 //Danya Leyva
 // Neal Hannon
 //Alejandro Garcia
 //Nathaniel Corteza
 //Meretrout(J.Q)
+//Ivan Peralta
+
 
 
 
@@ -48,6 +51,7 @@ void ls(void);
 void mnFun(void);
 void JMfun(void);
 void RRlab(void);
+void RyansRoom(int inventoryRR[]);
 void jwFunc(void);
 void jsl();
 void dcFun(void);
@@ -109,12 +113,11 @@ bool televisionTroubles(int max_player_HP, int max_enemy_HP, int max_numOfPotion
 bool laughingLaboratory(int max_player_HP, int max_enemy_HP, int max_numOfPotions);
 bool spaceSpectacle(int max_player_HP, int max_enemy_HP, int max_numOfPotions);
 
+void showStarterInfo(int choice);
+int jwStory(void);
 bool getChoiceDL(void);
-
-
 void jkFun(void);
 void jkRoom41(void); 
-
 
 
 
@@ -171,7 +174,7 @@ int main(int argc, char *argv[])
 			}
 			case 7:
 			{
-				jwFunc();
+				jwStory();
 				puts("room7");
 				break;
 			}
@@ -568,7 +571,9 @@ int main(int argc, char *argv[])
 			}
 			case 61:
 			{
+				int inventoryRR[] ={0,0};
 				RRlab();
+				RyansRoom(inventoryRR);
                                 puts("room61");
                                 break;
 			}
@@ -1731,7 +1736,167 @@ void RRlab(void)
 	printf("RRroom61\n");
 }
 
+void RyansRoom(int inventoryRR[])
+{
+	int choice;
+        int zombieHP = 25;
 
+        int max = 10;
+        int min = 5;
+
+        printf("YOu enter a dimly lit mechanics garage.\n");
+        printf("THe door you entered through turned into a restroom.\n");
+        printf("It looks a mess, you think to your self, and the smell of something terrible is pungent.\n");
+        printf("This isn't right....\n");
+        printf("YOu look at the mechanics lift and you notice something.");
+        printf("A Zombie!! Your worst nightmare come true!! You back away and decide to take action!!\n");
+
+printf("What's your first step of action?\n");
+
+for(int i =0; i < 15; i++)
+{
+printf("\n=============Choice==========\n");
+printf("1.Fight the Zombie\n");
+printf("2.Search the Garage\n");
+printf("3.Try to escape using car\n");
+printf("4.Use radio to call for help\n");
+printf("5.Barricade Yourself\n");
+
+printf("Choice:");
+scanf("%d",&choice);
+
+switch(choice)
+{
+        case 1:
+                {
+
+                        if(inventoryRR[0] == 0)
+                        {
+                                printf("You have no weapon!! You barely escape the zombie's clutches\n");
+                        }
+                        else
+                        {
+                                int damage = (rand() % (max - min +1)) + min ;// deal damage 5-10
+
+                                zombieHP -= damage;
+
+                                printf("You hit the zombie for %d damage!!\n",damage);
+
+                                if(zombieHP <= 0)
+                                {
+                                        printf("You decommisioned the zombie!! Now's the time to escape.... \n");
+                                        break;
+                                }
+                                else
+                                {
+                                         printf("It's still alive strike it again!!\n");
+                                }
+
+                        }
+                                break;
+	        }
+        case 2:
+                {
+
+                        printf("You search the garage...\n");
+
+                        if(zombieHP <= 0)
+                        {
+                                printf("The Zombies dead. Now you can search peacefully... \n");
+                        }
+                        else
+                        {
+                                printf("The search is very scary with the zombie still around.\n");
+                        }
+
+                                int item = rand() %3;
+
+                                if(item == 0 && inventoryRR[0]== 0)
+                                {
+                                        printf("You found a wrench! A powerful weapon!\n");
+                                        printf("Use it to strike the zombie!!\n");
+                                        inventoryRR[0] = 1;
+                                }
+                                else if (item ==1 && inventoryRR[1] == 0)
+                                {
+                                        printf("You found car keys!!\n");
+                                        inventoryRR[1] = 1;
+					  }
+                                else
+                                {
+                                        printf("You found nothing else useful\n");
+                                        printf("Search Again\n");
+                                }
+
+                        break;
+                }
+        case 3:
+                {
+
+                        printf("You try to escape using car thats on the right of the lift...\n");
+                        if(inventoryRR[1] == 0)
+                        {
+                                printf("The cars locked!! You need keys to get inside!!\n");
+                        }
+                        else
+                        {
+                                printf("You use the car key to unlock the car... \n");
+
+                                if(zombieHP > 0)
+                                {
+                                        printf("The zombie makes it way towards you!! You fumble the keys!!\n");
+                                        printf("You narrowly escape it!!\n");
+                                }
+                                else
+                                {
+					 printf("With the zombie gone, you calmly put the keys into ignition...\n");
+                                }
+                                printf("You Escape!!\n");
+                                return;
+
+                        }
+                        break;
+
+                }
+        case 4:
+                {
+
+                        printf("You try to call for help!\n");
+                        if(zombieHP > 0)
+                        {
+                                printf("The zombie is still here! Get rid of it!! \n");
+                        }
+                        else
+                        {
+                                printf("You call for help. The military is still running.... \n");
+                                printf("All there is to do is wait.\n");
+                                return;
+                        }
+
+                                break;
+
+                }
+
+	case 5:
+                {
+                        printf("You decide to barricade yourself in the bathroom!\n");
+                        printf("You survived but for how long? \n");
+			printf("You should do something else!!\n");
+                        break;
+
+                }
+
+        default:
+                {
+
+                        printf("Invalid Choice!!\n");
+                        break;
+                }
+
+                }//switch
+        }//for loop
+         printf("Going to the main menu...\n");
+}//end of  function prototype RR
 void jwFunc(void)
 {
 	printf("JW\n");
@@ -2409,6 +2574,337 @@ void brooklynstitt(void)
 void ip21(void)
 {
 	printf("IP\n");
+	//Setting up the enviroment
+	printf("\nUpon Entering 'Room 21' your nose is greeted by the smell of popcorn and dust, your eyes see what looks like the lobby of a movie theater, \nand you hear Justin Beiber's 'Baby ft. Ludacris' playing softly out of a speaker. Also everything is in black and white including you.\n");
+	puts("Just as you're reminiscing about your near death experience you hear someone call you by your name.");
+	puts("");//new line
+
+	//Cashier Talk
+	puts("'Hey your name welcome to the 20th anual Jared Leto movie Marathon!!!'");
+	puts("'What movie would you like to see?'");
+	puts("");
+	puts("Seeing as you dont know much of anything you walk up to the counter.");
+
+	//Array to keep track of what movies have been seen
+	bool movieSeen[5] = {false, false, false, false, false};
+
+	//while loop since we're gonna be returning to the lobby to see all the other movies
+	while(movieSeen[0] == false || movieSeen[1] == false || movieSeen[2] == false || movieSeen[3] == false || movieSeen[4] == false)
+	{
+		//Counter: keeps track of the loop count
+		int counter = 0;
+
+
+		//Prompt Choice of Movie
+		puts("Gazing at the movie showings listed you see:");
+		if(movieSeen[0] == false)
+		{
+		    puts(" 1) Tron: Ares");
+		}
+		if(movieSeen[1] == false)
+		{
+			puts(" 2) Morbius");
+		}
+		if(movieSeen[2] == false)
+		{
+			puts(" 3) Zach Snyder's Justice League");
+		}
+		if(movieSeen[3] == false)
+		{
+			puts(" 4) Suicide Squad");
+		}
+		if(movieSeen[4] == false)
+		{
+			puts(" 5) American Psycho");
+		}
+
+		//Read in Input
+		int playerInput = 0;
+		scanf("%d", &playerInput);
+
+		//Check to see if the input is out of bounds or if the movie has already been seen
+		while(playerInput > 5 || playerInput < 1 || movieSeen[playerInput - 1] == true)
+		{
+			puts("The choice you made is not available. Please input another choice.");
+			scanf("%d", &playerInput);
+		}
+
+		//Movie 1 is chosen
+		if(playerInput - 1 == 0)
+		{
+			puts("");
+			puts("'Tron: Ares it is sir. Your theater will be room 5 on the right.'");
+			movieSeen[0] = true;
+
+			//Tron Ares Scene Bellow-------------------------------------------------------------------------
+			puts("");
+			puts("Heading towards the right and into room 5 you notice that the theater is empty. And thus you chose your favorite seat and waited for the movie to starts.");
+			puts("------25 minutes later------");
+			puts("After a long wait a crew member enters the theater and aproaches your seat.");
+			puts("'Im sorry to inform you but we are having difficulties with the projector and can't get the movie to start. Therfor we're asking you to return to the lobby'");
+			printf(" 1) Alright I'll go back to the lobby\n 2) Can I take a look at the projector, I might be able to fix it\n");
+
+			//input
+			int tronInput = 0;
+            		scanf("%d", &tronInput);
+		
+            		//Check to see if the input is out of bounds or if the movie has already been seen
+            		while(tronInput > 2 || tronInput < 1)
+            		{
+                		puts("The choice you made is not available. Please input another choice.");
+                		scanf("%d", &tronInput);
+            		}
+
+			if(tronInput == 2)
+			{
+				puts("The employee guides you to the projection room and waits for you to do your thing.");
+				//WORKING HERE WORKING HERE
+				int working = 0;
+				int option = 0;
+				while(working < 1)
+				{
+					puts("In front of you lies the projector, what do you do?");
+					puts(" 1) Check to see if the projector is plugged in");
+					puts(" 2) Open it up to see if it is a hardware issue");
+					puts(" 3) Trun it off and then back on");
+					scanf("%d", &option);
+
+					while(option > 3 || option < 1)
+					{
+						puts("The choice you made is not available. Please input another choice.");
+                        			scanf("%d", &option);
+					}
+
+					if(option == 1)
+					{
+						puts("You follow the cable leading out of the projector and it lead to an outlet.");
+						puts("Of course its plugged in already");
+					}
+					else if (option == 2)
+					{
+						puts("You open up the projector with a screwdriver you found nearby only to realize that this projector is ancient and you done know anything about it");
+					}
+					else if (option == 3)
+					{
+						puts("You reset the projector and the movie starts.");
+						working = working + 1;
+					}
+				}
+				puts("Now that the projector works you rush down to your seat and watch Tron: Ares.");
+			}
+			else
+			{
+				puts("Seeing as the film wont show you leave.");
+			}
+		}
+		//movie 2 is chosen
+		else if(playerInput - 1 == 1)
+		{
+			puts("");
+			puts("'Morbius it is sir. Your theater will be room 6 on the right.'");
+			movieSeen[1] = true;
+
+			//Morbius Scene Bellow--------------------------------------------------------------------------
+			puts("On your way to theater 6 you encounter a curious sight, at the entrance of theater 6 stands a chicken that is on a cat that is on a dog that is on a pig.");
+			puts("You slowly walk up the gang of animals and introduce yourself.");
+			puts("'It's a pleasure to meet you but alas we cannot let you pass unless you answer some basic math problems.' the chicken responds.");
+			puts(" 1) Doing math isnt worth the hassle. Ill just head back to the lobby.");
+			puts(" 2) Sure throw them at me.");
+
+			int answer = 0;
+			scanf("%d", &answer);
+
+			while(answer > 2 || answer < 1)
+			{
+				puts("Your input is invalid. Please try again.");
+				scanf("%d", &answer);
+			}
+
+			if(answer == 1)
+			{
+				puts("You turn around and head back to the lobby, not amount of Jared Leto would make up for the math.");
+			}
+			else if(answer == 2)
+			{
+				puts("'Very well.' said the pig");
+				puts("'Get ready to do the best math of your life.' said the dog");
+				puts("'What is the derivative of e^x?' said the cat");
+
+				puts(" 1) It cannot be determined.");
+				puts(" 2) e^x");
+				puts(" 3) I straight up don't know.");
+
+				scanf("%d", &answer);
+				while(answer > 3 || answer < 1)
+				{
+					puts("Invalid answer. Please try again.");
+					scanf("%d", &answer);
+				}
+				if(answer == 1)
+				{
+					puts("'WRONG ' meowed the cat");
+					puts("'Please leave' said the pig");
+				}
+				else if (answer == 2)
+				{
+					puts("'Horah!! You got it right.' said the dog");
+
+					puts("The tower of animals walks away and you enter the theater.");
+					puts("You get into your seat and watch Morbius, and once its done you head back to the lobby.");
+				}
+				else if (answer == 3)
+				{
+					puts("'I apreciate the honesty. But it's still wrong.' said the chicken");
+					puts("'Please leave' said the pig");
+				}
+			}
+		}
+		//movie 3 is chosen
+		else if(playerInput - 1 == 2)
+		{
+			puts("");
+			puts("'Zach Snyder's Justice League it is sir. Your theater will be room 10 on the left.'");
+			movieSeen[2] = true;
+
+			//Justice League Scene Bellow-------------------------------------------------------------------
+			puts("You tak3 a s3at in th3ater 10 and realiz3 that all 3 ar3 r3plac3d with 3 and that you can s33 the color blu3.");
+			puts("You watch the 5 hour long film in silence and yo- wait a minute, you fell alseep 10 minutes in. You wake up after a while dazed and confused and head back out.");
+
+		}
+		//movie 4 is chosen
+		else if(playerInput - 1 == 3)
+		{
+			puts("");
+			puts("'Suicide Squad it is sir. Your theater will be room 12 on the left.'");
+			movieSeen[3] = true;
+
+			//Suicide Squad Scene Bellow-------------------------------------------------------------------
+			srand(time(NULL));
+			int randNum = 1 + rand() %5;
+			int numGuessed = 0;
+
+			puts("You make the longe trek to theater 12 and find a seat and wait for the movie to start.");
+			puts("While waiting for the film to start a clown sits on the sit immediatly to your right.");
+			puts("About twenty minutes into the movie he leans over and asks you to guess a number between 1 and 5.");
+			puts(" 1) 2");
+			puts(" 2) 5");
+			puts(" 3) 3");
+			puts(" 4) 1");
+			puts(" 5) 4");
+
+			scanf("%d", &numGuessed);
+
+			while(numGuessed > 5 || numGuessed < 1)
+			{
+				puts("'I belive I said to guess a NUMBER BETWEEN 1 AND 5, inclusive of course.' said the Clown");
+				scanf("%d", &numGuessed);
+			}
+			if(numGuessed == 1)
+			{
+				if(randNum == 2)
+				{
+					puts("'DING DING DING!!! We have a winner answer #1 that was 2 is right!!!' yelled the clown as he ran out of the theater");
+					puts("You continue watching the film in silence");
+				}
+				else
+				{
+					puts("*A lound buzzer can be hear* 'Wrong answer.' whispered the Clown.");
+					puts("The clown sat next to you for the rest of the film");
+				}
+			}
+			else if(numGuessed == 2)
+			{
+				if(randNum == 5)
+				{
+					puts("'DING DING DING!!! We have a winner answer #2 that was 5 is right!!!' yelled the clown as he ran out of the theater");
+                    			puts("You continue watching the film in silence");
+				}
+				else
+                		{
+                    			puts("*A lound buzzer can be hear* 'Wrong answer.' whispered the Clown.");
+                    			puts("The clown sat next to you for the rest of the film");
+                		}
+			}
+			else if(numGuessed == 3)
+			{
+				if(randNum == 3)
+				{
+					puts("'DING DING DING!!! We have a winner answer #3 that was 3 is right!!!' yelled the clown as he ran out of the theater");
+                    			puts("You continue watching the film in silence");
+				}
+				else
+                		{
+                    			puts("*A lound buzzer can be hear* 'Wrong answer.' whispered the Clown.");
+                    			puts("The clown sat next to you for the rest of the film");
+                		}
+			}
+			else if(numGuessed == 4)
+			{
+				if(randNum == 1)
+				{
+					puts("'DING DING DING!!! We have a winner answer #4 that was 1 is right!!!' yelled the clown as he ran out of the theater");
+                    			puts("You continue watching the film in silence");
+				}
+				else
+                		{
+                    			puts("*A lound buzzer can be hear* 'Wrong answer.' whispered the Clown.");
+                   	 		puts("The clown sat next to you for the rest of the film");
+                		}
+			}
+			else if(numGuessed == 5)
+			{
+				if(randNum == 4)
+				{
+					puts("'DING DING DING!!! We have a winner answer #5 that was 4 is right!!!' yelled the clown as he ran out of the theater");
+                    			puts("You continue watching the film in silence");
+				}
+				else
+        			{
+           			puts("*A lound buzzer can be hear* 'Wrong answer.' whispered the Clown.");
+            			puts("The clown sat next to you for the rest of the film");
+        			}
+			}
+		}
+		//movie 5 is chosen
+		else if(playerInput - 1 == 4)
+		{
+			puts("");
+			puts("'American Psycho it is sir. Your theater will be upstairs in room 15.'");
+			movieSeen[4] = true;
+
+			//American Psycho Scene Bellow-----------------------------------------------------------------
+			puts("Heading upstairs you enter theater 15, and get the best seat in the house.");
+			puts("The movie starts on time and you had a good time.");
+		}
+
+
+		//Finished seeing the movie message
+		counter = counter + 1;
+		if(playerInput - 1 == 0)
+		{
+			puts("Having ''finished'' Tron: Ares you find yourself walking back to the lobby to see what movie you're gonna next.");
+		}
+		else if(playerInput - 1 == 1)
+		{
+			puts("Having ''finished'' Morbius you find yourself walking back to the lobby to see what movie you're gonna next.");
+		}
+		else if(playerInput - 1 == 2)
+		{
+			puts("Having ''finished'' Justice League you find yourself walking back to the lobby to see what movie you're gonna next.");
+		}
+		else if(playerInput - 1 == 3)
+		{
+			puts("Having ''finished'' Suicide Squad you find yourself walking back to the lobby to see what movie you're gonna next.");
+		}
+		else if(playerInput - 1 == 4)
+		{
+			puts("Having ''finished'' American Psycho you find yourself walking back to the lobby to see what movie you're gonna next.");
+		}
+	}
+
+	//Ending notice that i'll delete later hopefully
+	printf("\n\n!!!!!As you heading back to the lobby you hear a loud THUD and your vision grows black!!!!!\n\n");
+
 }
 
 void rtFun(void)
@@ -5740,7 +6236,161 @@ bool laughingLaboratory(int max_player_HP, int max_enemy_HP, int max_numOfPotion
 		isPlayerTurnOver = false;
 	}
 }
+int jwStory()
+{
+        srand(time(NULL));
+        int choice;
+        int starterInfo;
+        int starterChoice;
+        int trainChoice;
+        int gymChoice;
+        int moveChoice;
+        int playAgain = 1;
 
+        char starters[3][20] = {"Pyron", "Bitlet", "Algoroot"};
+        do
+        {
+                printf("\nWelcome to the world of Codémon! Let's being your coding journey.\n");
+
+                //decision 1 - learn starter
+                do
+                {
+                        printf("\nEnter a number (1-3) to learn about a starter:\n");
+                        printf("\n\033[0;31m1. Pyron\033[0;31m\n");
+                        printf("\n\033[0;34m2. Bitlet\033[0;34m\n");
+                        printf("\n\033[0;32m3. Algoroot\033[0;32m\n");
+                        printf("\033[0m");
+                        printf("\n4. Exit\n");
+
+                        printf("\nChoose a starter to view: ");
+                        scanf("%d", &choice);
+
+                        if (choice >= 1 && choice <= 3)
+                        {
+                                showStarterInfo(choice);
+                        }
+                        else if (choice == 4)
+                        {
+                                printf("Exiting starter info...\n");
+                        }
+                        else
+                        {
+                                printf("Invalid choice.\n");
+                        }
+                }
+                while (choice!=4);
+
+                //decision #2 - choose starter
+                printf("\nChoose your starter (1-3):\n");
+                scanf("%d", &starterChoice);
+
+                printf("You chose %s!\n", starters[starterChoice - 1]);
+
+                //decision #3 - training
+                printf("\nDo you want to train your Codémon?\n");
+                printf("1. Yes\n2. No\n");
+                scanf("%d", &trainChoice);
+
+                if (trainChoice == 1)
+                {
+                        printf("Training complete! %s got stronger.\n", starters[starterChoice - 1]);
+                }
+                else
+                {
+                        printf("You skipped training. You're weak.\n");
+                }
+                //decision #4 - gym battle
+                printf("\nGym Leader Prof. Poppe challenges you! The prize is an A in the class.\n");
+                printf("\nDo you want to enter the Gym Battle?\n");
+                printf("1. Yes\n2. No\n");
+                scanf("%d", &gymChoice);
+
+                if (gymChoice == 1)
+                {
+
+                        printf("\nGym Battle Start! Gym Leader Prof. Poppe's TA-Mon has 40 HP.\n");
+
+                        //decision #5 - choose move
+                        printf("\nChoose your move:\n");
+                        printf("1. Basic Attack\n2. Special Move\n");
+                        scanf("%d", &moveChoice);
+
+                        int i;
+                        int totalDamage = 0;
+
+                        if (moveChoice == 1)
+                        {
+                                printf("You used Basic Attack!\n");
+
+                                for (i = 0; i < 3; i++)
+                                {
+                                        int roll = rand() % 20 + 1;
+                                        printf("Attack %d dealt %d damage!\n", i + 1, roll);
+                                        totalDamage += roll;
+                                }
+                        }
+                        else
+                        {
+                                printf("You used Special Move!\n");
+
+                                for (i = 0; i < 2; i++)
+                                 {
+                                        int roll = rand() % 25 + 5;
+                                        printf("Power hit %d dealt %d damage!\n", i + 1, roll);
+                                        totalDamage += roll;
+                                }
+                        }
+                        printf("\nTotal damage: %d\n", totalDamage);
+
+                        if (totalDamage >= 40)
+                        {
+                                printf("Congratulations! You passed CSC 321 with an A.\n");
+                        }
+                        else
+                        {
+                                printf(" Oh no! You fail the class. The Professor outsmarted you...\n");
+                        }
+                }
+                else
+                {
+                printf("\nYou avoided the Gym Battle... (lameee)\n");
+                }
+
+                printf("\nDo you want to play again?\n");
+                printf("1. Yes\n2. No\n");
+                scanf("%d", &playAgain);
+
+        }
+        while (playAgain == 1);
+
+        printf("\nThanks for playing Codémon!\n");
+
+        return EXIT_SUCCESS;
+}
+void showStarterInfo(int choice)
+{
+                if (choice == 1)
+                {
+                        printf("\n\033[0;31mPyron: Fire-type Codémon. Fast and chaotic.\033[0;31m\n");
+                        printf("\033[0m");
+                }
+                else if (choice == 2)
+                {
+                        printf("\n\033[0;34mBitlet: Water-type Codémon. Builds speed over time.\033[0;34m\n");
+                        printf("\033[0m");
+                }
+                else if (choice == 3)
+                {
+                        printf("\n\033[0;32mAlgoroot: Grass-type Codémon. Heals itself.\033[0;32m\n");
+                        printf("\033[0m");
+                }
+                else
+                {
+                        printf("\nInvalid choice.\n");
+                        printf("\033[0m");
+                }
+
+}
 bool spaceSpectacle(int max_player_HP, int max_enemy_HP, int max_numOfPotions)
 {
     
