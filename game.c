@@ -455,6 +455,49 @@ int main(int argc, char *argv[])
 void jbInit()
 {
 	puts("jbRoom17");
+	int chest;
+	int lives =3;
+
+	char *chests[5] =
+	{
+		"GOLD",
+		"SILVER",
+		"BRONZE",
+		"DIAMOND",
+		"WOOD",
+
+	};
+
+	while (lives > 0)
+	{ 
+		puts("\n --TREASURE ROOM--");
+
+		for(int i =0; i<5; i++)
+		{
+			printf("%d. %s\n", i +1, chests[i]);
+		}	
+
+		printf("Choose a chest: ");
+		scanf("%d", &chest);
+
+		if(chest == 2)
+		{
+			puts("CONGRATS, YOU CHOSE CORRECT!!");
+			break;
+		}
+		else
+		{
+			lives--;
+
+			puts("WRONG CHOICE! The walls begin closing in!");
+			printf("Lives left: %d\n", lives);
+		}
+
+		if(lives <=0)
+		{
+			puts("GAME OVER!!");
+		}
+	}		
 }
 
 void ip21(void)
