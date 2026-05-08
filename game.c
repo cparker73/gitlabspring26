@@ -34,7 +34,8 @@
 
 //place function prototypes here
 void khprinter(void);
-
+void coolGame(void);
+int iAmLazy(int);
 
 //dcortez function prototypes 
 void ANFUN(void);
@@ -370,6 +371,7 @@ int main(int argc, char *argv[])
 			{
 				puts("room27");
      				theSigmaMethod();
+              coolGame();
 				break;
 			}
 			case 28:
