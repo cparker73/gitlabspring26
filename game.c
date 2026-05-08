@@ -98,6 +98,8 @@ bool televisionTroubles(int max_player_HP, int max_enemy_HP, int max_numOfPotion
 bool laughingLaboratory(int max_player_HP, int max_enemy_HP, int max_numOfPotions);
 bool spaceSpectacle(int max_player_HP, int max_enemy_HP, int max_numOfPotions);
 
+void showStarterInfo(int choice);
+int jwStory(void);
 
 
 
@@ -154,7 +156,7 @@ int main(int argc, char *argv[])
 			}
 			case 7:
 			{
-				jwFunc();
+				jwStory();
 				puts("room7");
 				break;
 			}
@@ -3103,7 +3105,161 @@ bool laughingLaboratory(int max_player_HP, int max_enemy_HP, int max_numOfPotion
 		isPlayerTurnOver = false;
 	}
 }
+int jwStory()
+{
+        srand(time(NULL));
+        int choice;
+        int starterInfo;
+        int starterChoice;
+        int trainChoice;
+        int gymChoice;
+        int moveChoice;
+        int playAgain = 1;
 
+        char starters[3][20] = {"Pyron", "Bitlet", "Algoroot"};
+        do
+        {
+                printf("\nWelcome to the world of Codémon! Let's being your coding journey.\n");
+
+                //decision 1 - learn starter
+                do
+                {
+                        printf("\nEnter a number (1-3) to learn about a starter:\n");
+                        printf("\n\033[0;31m1. Pyron\033[0;31m\n");
+                        printf("\n\033[0;34m2. Bitlet\033[0;34m\n");
+                        printf("\n\033[0;32m3. Algoroot\033[0;32m\n");
+                        printf("\033[0m");
+                        printf("\n4. Exit\n");
+
+                        printf("\nChoose a starter to view: ");
+                        scanf("%d", &choice);
+
+                        if (choice >= 1 && choice <= 3)
+                        {
+                                showStarterInfo(choice);
+                        }
+                        else if (choice == 4)
+                        {
+                                printf("Exiting starter info...\n");
+                        }
+                        else
+                        {
+                                printf("Invalid choice.\n");
+                        }
+                }
+                while (choice!=4);
+
+                //decision #2 - choose starter
+                printf("\nChoose your starter (1-3):\n");
+                scanf("%d", &starterChoice);
+
+                printf("You chose %s!\n", starters[starterChoice - 1]);
+
+                //decision #3 - training
+                printf("\nDo you want to train your Codémon?\n");
+                printf("1. Yes\n2. No\n");
+                scanf("%d", &trainChoice);
+
+                if (trainChoice == 1)
+                {
+                        printf("Training complete! %s got stronger.\n", starters[starterChoice - 1]);
+                }
+                else
+                {
+                        printf("You skipped training. You're weak.\n");
+                }
+                //decision #4 - gym battle
+                printf("\nGym Leader Prof. Poppe challenges you! The prize is an A in the class.\n");
+                printf("\nDo you want to enter the Gym Battle?\n");
+                printf("1. Yes\n2. No\n");
+                scanf("%d", &gymChoice);
+
+                if (gymChoice == 1)
+                {
+
+                        printf("\nGym Battle Start! Gym Leader Prof. Poppe's TA-Mon has 40 HP.\n");
+
+                        //decision #5 - choose move
+                        printf("\nChoose your move:\n");
+                        printf("1. Basic Attack\n2. Special Move\n");
+                        scanf("%d", &moveChoice);
+
+                        int i;
+                        int totalDamage = 0;
+
+                        if (moveChoice == 1)
+                        {
+                                printf("You used Basic Attack!\n");
+
+                                for (i = 0; i < 3; i++)
+                                {
+                                        int roll = rand() % 20 + 1;
+                                        printf("Attack %d dealt %d damage!\n", i + 1, roll);
+                                        totalDamage += roll;
+                                }
+                        }
+                        else
+                        {
+                                printf("You used Special Move!\n");
+
+                                for (i = 0; i < 2; i++)
+                                 {
+                                        int roll = rand() % 25 + 5;
+                                        printf("Power hit %d dealt %d damage!\n", i + 1, roll);
+                                        totalDamage += roll;
+                                }
+                        }
+                        printf("\nTotal damage: %d\n", totalDamage);
+
+                        if (totalDamage >= 40)
+                        {
+                                printf("Congratulations! You passed CSC 321 with an A.\n");
+                        }
+                        else
+                        {
+                                printf(" Oh no! You fail the class. The Professor outsmarted you...\n");
+                        }
+                }
+                else
+                {
+                printf("\nYou avoided the Gym Battle... (lameee)\n");
+                }
+
+                printf("\nDo you want to play again?\n");
+                printf("1. Yes\n2. No\n");
+                scanf("%d", &playAgain);
+
+        }
+        while (playAgain == 1);
+
+        printf("\nThanks for playing Codémon!\n");
+
+        return EXIT_SUCCESS;
+}
+void showStarterInfo(int choice)
+{
+                if (choice == 1)
+                {
+                        printf("\n\033[0;31mPyron: Fire-type Codémon. Fast and chaotic.\033[0;31m\n");
+                        printf("\033[0m");
+                }
+                else if (choice == 2)
+                {
+                        printf("\n\033[0;34mBitlet: Water-type Codémon. Builds speed over time.\033[0;34m\n");
+                        printf("\033[0m");
+                }
+                else if (choice == 3)
+                {
+                        printf("\n\033[0;32mAlgoroot: Grass-type Codémon. Heals itself.\033[0;32m\n");
+                        printf("\033[0m");
+                }
+                else
+                {
+                        printf("\nInvalid choice.\n");
+                        printf("\033[0m");
+                }
+
+}
 bool spaceSpectacle(int max_player_HP, int max_enemy_HP, int max_numOfPotions)
 {
     
