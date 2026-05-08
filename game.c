@@ -46,6 +46,7 @@ void ls(void);
 void mnFun(void);
 void JMfun(void);
 void RRlab(void);
+void RyansRoom(int inventoryRR[]);
 void jwFunc(void);
 void jsl();
 void dcFun(void);
@@ -565,7 +566,9 @@ int main(int argc, char *argv[])
 			}
 			case 61:
 			{
+				int inventoryRR[] ={0,0};
 				RRlab();
+				RyansRoom(inventoryRR);
                                 puts("room61");
                                 break;
 			}
@@ -1728,7 +1731,167 @@ void RRlab(void)
 	printf("RRroom61\n");
 }
 
+void RyansRoom(int inventoryRR[])
+{
+	int choice;
+        int zombieHP = 25;
 
+        int max = 10;
+        int min = 5;
+
+        printf("YOu enter a dimly lit mechanics garage.\n");
+        printf("THe door you entered through turned into a restroom.\n");
+        printf("It looks a mess, you think to your self, and the smell of something terrible is pungent.\n");
+        printf("This isn't right....\n");
+        printf("YOu look at the mechanics lift and you notice something.");
+        printf("A Zombie!! Your worst nightmare come true!! You back away and decide to take action!!\n");
+
+printf("What's your first step of action?\n");
+
+for(int i =0; i < 15; i++)
+{
+printf("\n=============Choice==========\n");
+printf("1.Fight the Zombie\n");
+printf("2.Search the Garage\n");
+printf("3.Try to escape using car\n");
+printf("4.Use radio to call for help\n");
+printf("5.Barricade Yourself\n");
+
+printf("Choice:");
+scanf("%d",&choice);
+
+switch(choice)
+{
+        case 1:
+                {
+
+                        if(inventoryRR[0] == 0)
+                        {
+                                printf("You have no weapon!! You barely escape the zombie's clutches\n");
+                        }
+                        else
+                        {
+                                int damage = (rand() % (max - min +1)) + min ;// deal damage 5-10
+
+                                zombieHP -= damage;
+
+                                printf("You hit the zombie for %d damage!!\n",damage);
+
+                                if(zombieHP <= 0)
+                                {
+                                        printf("You decommisioned the zombie!! Now's the time to escape.... \n");
+                                        break;
+                                }
+                                else
+                                {
+                                         printf("It's still alive strike it again!!\n");
+                                }
+
+                        }
+                                break;
+	        }
+        case 2:
+                {
+
+                        printf("You search the garage...\n");
+
+                        if(zombieHP <= 0)
+                        {
+                                printf("The Zombies dead. Now you can search peacefully... \n");
+                        }
+                        else
+                        {
+                                printf("The search is very scary with the zombie still around.\n");
+                        }
+
+                                int item = rand() %3;
+
+                                if(item == 0 && inventoryRR[0]== 0)
+                                {
+                                        printf("You found a wrench! A powerful weapon!\n");
+                                        printf("Use it to strike the zombie!!\n");
+                                        inventoryRR[0] = 1;
+                                }
+                                else if (item ==1 && inventoryRR[1] == 0)
+                                {
+                                        printf("You found car keys!!\n");
+                                        inventoryRR[1] = 1;
+					  }
+                                else
+                                {
+                                        printf("You found nothing else useful\n");
+                                        printf("Search Again\n");
+                                }
+
+                        break;
+                }
+        case 3:
+                {
+
+                        printf("You try to escape using car thats on the right of the lift...\n");
+                        if(inventoryRR[1] == 0)
+                        {
+                                printf("The cars locked!! You need keys to get inside!!\n");
+                        }
+                        else
+                        {
+                                printf("You use the car key to unlock the car... \n");
+
+                                if(zombieHP > 0)
+                                {
+                                        printf("The zombie makes it way towards you!! You fumble the keys!!\n");
+                                        printf("You narrowly escape it!!\n");
+                                }
+                                else
+                                {
+					 printf("With the zombie gone, you calmly put the keys into ignition...\n");
+                                }
+                                printf("You Escape!!\n");
+                                return;
+
+                        }
+                        break;
+
+                }
+        case 4:
+                {
+
+                        printf("You try to call for help!\n");
+                        if(zombieHP > 0)
+                        {
+                                printf("The zombie is still here! Get rid of it!! \n");
+                        }
+                        else
+                        {
+                                printf("You call for help. The military is still running.... \n");
+                                printf("All there is to do is wait.\n");
+                                return;
+                        }
+
+                                break;
+
+                }
+
+	case 5:
+                {
+                        printf("You decide to barricade yourself in the bathroom!\n");
+                        printf("You survived but for how long? \n");
+			printf("You should do something else!!\n");
+                        break;
+
+                }
+
+        default:
+                {
+
+                        printf("Invalid Choice!!\n");
+                        break;
+                }
+
+                }//switch
+        }//for loop
+         printf("Going to the main menu...\n");
+}//end of  function prototype RR
 void jwFunc(void)
 {
 	printf("JW\n");
