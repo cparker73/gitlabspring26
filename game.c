@@ -18,6 +18,7 @@
 // Neal Hannon
 //Alejandro Garcia
 //Nathaniel Corteza
+//Dominic Carreto
 
 
 
@@ -51,7 +52,7 @@ void RRlab(void);
 void RyansRoom(int inventoryRR[]);
 void jwFunc(void);
 void jsl();
-void dcFun(void);
+void totallyAUniqueFunctionName(void);
 void abFun(void);
 void function13AG(void);
 void theSigmaMethod(void);
@@ -215,7 +216,296 @@ int main(int argc, char *argv[])
 			}
 			case 14:
 			{
-				dcFun();
+				totallyAUniqueFunctionName();
+                int userChoice[1] = {0};
+                printf("\nYou open door 14 and the entrance is glowing. You step forward with your eyes covered.");
+                printf("\nYou uncover your eyes and see that you are in a forest in the middle of the night.");
+                printf("\nYou look around you and you are surrounded by trees but you are currently at a camp site.");
+                printf("\nYou see that in the middle is a fire and next to you is a backpack.");
+                printf("\nYou also noticed that the door you walked to is gone.");
+                printf("\nAs you are looking at your surroundings a bear appears and is approaching you.");
+                printf("\nYou look at what you can do and you have 3 options.");
+                printf("\n\t1. You can make yourself look \"big\".");
+                printf("\n\t2. Get something that is potentially useful from the backpack next to you.");
+                printf("\n\t3. You can run away.\n");
+                printf("Select an option: ");
+                scanf("%d",&userChoice[0]);
+                while(userChoice[0] != 1 && userChoice[0] != 2 && userChoice[0] != 3)
+                {
+                    printf("\nInvalid choice. Please enter a valid number: ");
+                    scanf("%d",&userChoice[0]);
+                }
+                if(userChoice[0] == 1)
+                {
+                    printf("\nYou make yourself look big by spreading your arms and legs out.");
+                    printf("\nYou are nervous but are willing to stay still to survive.");
+                    printf("\nBecause you are \"bigger\" the bear ignores you and walks away.");
+                }
+                if(userChoice[0] == 2)
+                {
+                    int randomNum = (rand() % 3) + 1;
+                    /*   Generates a number between 1 - 3 because the user is getting something quickly from the backpack
+                     *   and is not looking at what they got since they needed something quickly, so the item is random
+                     */
+                    if(randomNum == 1)
+                    {
+                        printf("\nYou grab something quickly from the backpack and you got a flashlight.");
+                        printf("\nYou look at the bear and the bear looks at you...");
+                        printf("\nYou turn on the flashlight but find out it doesn't have the batteries on it.");
+                        printf("\nThe bear jumps at you and bites you.");
+                        printf("\nYou scream in agony while the bear bites you.");
+                        printf("\nYour vision turns red as you lose consciousness and die.");
+                        printf("\n\n-----------------------------GAME OVER------------------------------\n\n");
+                        break;
+                    }
+                    if(randomNum == 2)
+                    {
+                        printf("\nYou grab something quickly from the backpack and you got bear spray.");
+                        printf("\nYou react quickly and use the bear spray on the bear.");
+                        printf("\nThe bear screams and runs away from your camp site.");
+                    }
+                    if(randomNum == 3)
+                    {
+                        printf("\nYou grab something quickly from the backpack and you got a sandwich.");
+                        printf("\nThe bear is very hungry so it bit your hand that was holding the sandwich.");
+                        printf("\nThe bear walks away satisfied.");
+                        printf("\nYou scream and lose consciousness slowly due to the blood lose.");
+                        printf("\n\n-----------------------------GAME OVER------------------------------\n\n");
+                        break;
+                    }
+                }
+                if(userChoice[0] == 3)
+                {
+                    printf("\nYou run away into the dark forest full of trees.");
+                    printf("\nAs you were running you fall due to a branch on the forest floor you didn't see due to the darkness.");
+                    printf("\nYou turn around and see that the bear is right behind you looking down at you.");
+                    printf("\nThe bear jumps at you and bites you while you are on ground.");
+                	printf("\nYou scream in agony while the bear bites you.");
+                	printf("\nYour vision turns red as you lose consciousness and die.");
+                    printf("\n\n-----------------------------GAME OVER------------------------------\n\n");
+                    break;
+                }
+                printf("\nYou are relived of the terrifying encounter you just experienced.");
+                printf("\nYou look at the backpack and grab the flashlights and put in the batteries");
+                printf("\nYou put on the backpack and prepare to walk to the deep forest since the area is dangerous");
+                printf("\nYou turn on the flashlight and walk to the deep forest trusting your gut.");
+                printf("\n10 minutes pass and you are still in the forest looking for a way to get out of this dimension like space.");
+                printf("\nAfter walking for a while you encounter an abandoned cabin.");
+                printf("\nYou are curious and walked into the abandoned cabin.");
+                printf("\nYou look around and you see that it is moldy and very dirty.");
+                printf("\nYou continue looking and you find 2 items at a dirty table.");
+                printf("\n\t1. A medical kit");
+                printf("\n\t2. Canned food");
+                printf("\nSelect an option: ");
+                scanf("%d",&userChoice[0]);
+                while(userChoice[0] != 1 && userChoice[0] != 2)
+                {
+                    printf("\nInvalid choice. Please enter a valid number: ");
+                    scanf("%d",&userChoice[0]);
+                }
+                if(userChoice[0] == 1)
+                {
+                    printf("\nYou grab the medical kit and use it on yourself.");
+                    printf("\nYou feel like a new person and left the abandoned cabin.");
+                }
+                if(userChoice[0] == 2)
+                {
+                    printf("\nYou open the canned food and start eating the food.");
+                    printf("\nAfter you are done eating you look at the can and see that the expiration date was 20 years ago.");
+                    printf("\nYou throw up the food but it is too late and your stomach hurts a lot.");
+                    printf("\nAfter a few minutes of experiencing the stomach pain you collapse and your consciousness fades away.");
+                    printf("\n\n-----------------------------GAME OVER------------------------------\n\n");
+                    break;
+                }
+                printf("\nYou continue walking forward into the dark forest.");
+                printf("\nYou encounter a trail and it has two paths");
+                printf("\n\t1. Take the left path.");
+                printf("\n\t2. Take the right path.");
+                printf("\nSelect an option: ");
+                scanf("%d",&userChoice[0]);
+                if(userChoice[0] == 1)
+                {
+                    printf("\nYou decide to take the left path and walk that path.");
+                    printf("\nYou walk for a few minutes until you see a sign saying that the path leads to a town.");
+                    printf("\nYou smile and keep walking forward hoping to ask someone they know where you are located.");
+                }
+                else if(userChoice[0] == 2)
+                {
+                    printf("\nYou decide to take the right path and walk that path,");
+                    printf("\nYou walk for you think was 30 minutes and then see a faint light between 2 trees and some bushes.");
+                    printf("\nYou approach the source of the light and find out that you came back to where your started.");
+                    printf("\nIt begins to rain and you have given up on finding a way out the mysterious forest.");
+                    printf("\n\n-----------------------------GAME OVER?------------------------------\n\n");
+                    break;
+                }
+                else
+                {
+	                printf("\nYou decide to make your own path and determined you start walking torwards a direction following your gut.");
+                	printf("\nYou are confident so confident in fact you feel like you can do anything.");
+                	printf("\n20 minutes later you are still walking and you encounter an empty circle with a cave on your path.");
+                	printf("\nYou later see a pack of wolves walking to you from the cave.");
+                	printf("\nYou can't let a pack of wolves stop you from walking your own path.");
+                	printf("\nYou say \"I won't let anything stop me from walking my own path not even wolves.\".");
+                	printf("\nThe wolves seem to have understood what you said and backed away from you.");
+                	printf("\nThe wolves then make way for their pack leader who walks torward you.");
+                	printf("\nYou look at the wolf pack leader and they are looking at you as if they are saying...");
+                	printf("\nIf you want to walk your own path you have to get through me!\"");
+                	printf("\nYou and the wolf get ready to fight!");
+                	printf("\nGet ready for a turn-based minigame!");
+                	//Start of a mini turn-based game
+                	int wolfLeaderHP = 115;
+                	int protagHP = 100;
+                	while(wolfLeaderHP > 0 && protagHP > 0)
+                	{
+						int choice;
+                		int wolfDmg = rand() % 13 + 8;
+                		printf("\nYour HP: %d", protagHP);
+                		printf("\nWolf HP: %d", wolfLeaderHP);
+                		printf("\n\t1.Attack  \n\t2.Heavy  \n\t3.Heal\n ");
+                		printf("\nSelect an option: ");
+                		scanf("%d", &choice);
+                		if(choice == 1)
+                		{
+                			//Attack 10 - 20 dmg
+                			int dmg = rand() % 10 + 11;
+                			wolfLeaderHP -= dmg;
+                		}
+                		else if(choice == 2)
+                		{
+                			// %50 chance of heavy attack doing dmg
+                			if(rand()%2)
+                			{
+                				//Attack 15 - 30 dmg
+								int dmg = rand()%16 + 15;
+								printf("Heavy hit %d!", dmg);
+								wolfLeaderHP -= dmg;
+							}
+                			else
+                			{
+                				printf("\nThe wolf saw through you and missed your attack!");
+                			}
+                		}
+                		else if(choice == 3)
+                		{
+                			protagHP += 20;
+                			if (protagHP > 100) protagHP = 100;
+                			printf("\nHeal +15");
+                		}
+                		else
+                		{
+                			printf("\nYou are confused giving up your next turn.");
+                		}
+                		if(wolfLeaderHP <= 0)
+                		{
+                			printf("\nYou have defeated the wolf pack leader!");
+                			break;
+                		}
+						printf("\nWolf hits you and you lose %d HP", wolfDmg);
+						protagHP -= wolfDmg;
+                		if(protagHP <= 0)
+                		{
+                			printf("\nDefeated!");
+                			break;
+                		}
+                	}
+                	if(protagHP > 0)
+                	{
+                		printf("\nThe wolf pack runs away seeing their leader laying on the floor unconscious and you continue walking.");
+                		printf("\nYou continue walking for what you think is an hour and you see a door in the middle of the forest.");
+                		printf("\nYou decide walk towards the door and open the door.");
+                		printf("\nThe entrance is glowing and you step forward with your eyes covered and smiling.");
+                		printf("\nYou successfully escaped the forest!");
+                		printf("\n\n-----------------------------Hidden Ending------------------------------\n\n");
+                		break;
+                	}
+                	else if(wolfLeaderHP > 0)
+                	{
+                		printf("\nThe wolf pack leader jumps at you and bites you.");
+                		printf("\nThe other wolves also start to bite you.");
+                		printf("\nYou scream in agony and experience pain like never before.");
+                		printf("\nYou tell yourself \"I should have not walked my own path...\".");
+                		printf("\nYour vision turns red as you lose consciousness and die.");
+                		printf("\n\n-----------------------------GAME OVER------------------------------\n\n");
+                		break;
+                	}
+                }
+				printf("\nYou walk the path and eventually arrive at a town and you find out no human or light in sight.");
+				printf("\nThe town looks old and abandoned so you decide to explore the town.");
+				printf("\nYou walk around see an abandoned hospital.");
+				printf("\nYou walk to the entrance and you see a long hall with multiple doors left and right.");
+				printf("\nYou walk at the long hall for what seems to be 5 minutes and think something isn't right.");
+				printf("\nYou look around and see a room number 14 so you remember that and continue walking.");
+				printf("\nYou continue walking while looking at the room number and you encounter room number 14 again.");
+				printf("\nYou realized you are walking in an infinite hallway and you start to think of what you can do.");
+				printf("\nSince you are in an infinite hallway you can think of a few things you can do.");
+				userChoice[0] = 0;
+				while(userChoice[0] != 2)
+				{
+					printf("\n\t1. Walk forward.\n\t2. Listen carefully for clues.\n\t3. Open a nearby door.");
+					printf("\nSelect an option: ");
+					scanf("%d",&userChoice[0]);
+					while(userChoice[0] != 1 && userChoice[0] != 2 && userChoice[0] != 3)
+					{
+						printf("\nInvalid choice. Please enter a valid number: ");
+						scanf("%d",&userChoice);
+					}
+					if(userChoice[0] == 1)
+					{
+						printf("\nYou walk forward and continue walking at the hallway.");
+						printf("\nYou then walk at the beginning of the hallway.");
+						printf("\nSince you are in an infinite hallway you can think of a few things you can do.");
+					}
+					if(userChoice[0] == 2)
+					{
+						printf("\nYou listen for any type of noise and there is a door that is playing music behind it.");
+						printf("\nYou open the door and you see a hospital room with a radio playing music.");
+						printf("\nYou look around the room and their is an open window.");
+						printf("\nYou decide to escape the infinite hallway by hopping out the window.");
+					}
+					if(userChoice[0] == 3)
+					{
+						printf("\nYou open a nearby door and see the same infinite hallway.");
+						printf("\nSince you are in an infinite hallway you can think of a few things you can do.");
+					}
+				}
+				printf("\nAfter you hopped out the window there are 2 places you can go.");
+				printf("\n\t1. Go back to town\n\t2. Go back to the forest");
+				printf("\nSelect an option: ");
+				scanf("%d",&userChoice);
+				while(userChoice[0] != 1 && userChoice[0] != 2)
+				{
+					printf("\nInvalid choice. Please enter a valid number: ");
+					scanf("%d",&userChoice[0]);
+				}
+				if(userChoice[0] == 1)
+				{
+					printf("\nYou decide to go back to town and keep walking until you reach the middle of the town.");
+					printf("\nYou are surrounded by houses and then you hear footsteps.");
+					printf("\nYou get close to the source of the footsteps and it is behind a door so you get close to it.");
+					printf("\nAs you get closer the door the door gets slammed open and you see a zombie.");
+					printf("\nThe zombies says brains and you run but then all of the towns houses doors are opened by zombies and you are surrounded.");
+					printf("\nYou run as fast as you can but the zombies catch up you and start brutally biting you.");
+					printf("\nYou scream in agony while the zombies bites you and start biting to your brain.");
+					printf("\nYour vision turns red and you instantly die.");
+					printf("\n\n-----------------------------GAME OVER------------------------------\n\n");
+					break;
+
+				}
+				if(userChoice[0] == 2)
+				{
+					printf("\nYou decide to walk into the forest and walk until you reach an underground bunker.");
+					printf("\nYou open the bunker door and walk down the bunker.");
+					printf("\nAs you walk down the bunker you hear multipe foot steps behind you.");
+					printf("\nThey are walking the same pace as you and when you are starting you walk faster.");
+					printf("\nSo do they...");
+					printf("\nThe footsteps gets louder and faster so you run as fast as you can without looking behind you.");
+					printf("\nAs you are running you see a door similar to the one you opened before you walked to the forest.");
+					printf("\nYou run and then you open the door.");
+					printf("\nAs you open the door something grabs and pulls your shoulder.");
+					printf("\nYou quickly take off the hand off your shoulder and escape.");
+					printf("\n\n-----------------------------The End------------------------------\n\n");
+					break;
+				}
 				puts("room14");
 				break;
 			}
@@ -1915,7 +2205,7 @@ void PogoAM(void)
 {
 	printf("AM\n");
 }
-void dcFun(void)
+void totallyAUniqueFunctionName(void)
 {
 	printf("DC\n");
 }
