@@ -94,7 +94,9 @@ void RT_playCupRound(void);
 void mtorres(void);
 void hOsuna(void);
 void nnawshin(void);
-void WMGwent(void);
+void WMRoom(void);
+void act1Version(void);
+
 void nhfun(void);
 void printInitialsAngelM(void);
 
@@ -478,7 +480,7 @@ int main(int argc, char *argv[])
 			case 46:
 			{
 				puts("room46");
-				WMGwent();
+				WMRoom();
 				break;
 			}
 			case 47:
@@ -3957,11 +3959,202 @@ void phas22(void)
 }
 
 
-void WMGwent(void)
+void WMRoom(void)
 {
-	printf("WM \n");
-}
+	printf("Welcome to Outbreak Zone\n<Inspired by my favorite zombies game Dying light 1>\n");
+    printf("Here every choice you make will decide your ending. So, be cautious with every choice!\n");
+    printf("Let the game begin!!!!\n");
 
+    printf("A deadly virus has spread and destroyed the city.\n"
+        "You are one of the few survivors that are trapped inside a zone. Locked away from the world!!!\n"
+        "During the day, there will be infected roaming the streets. However, at night there will be a deadlier creatures by the name of night stalkers creeping around the streets.\n");
+
+    printf("You wake up and looks like you got rescued by your team leader.\n"
+        "He says to you: We are running out of food and suuplies. If you want to survive, we will need your help.\n");
+    
+    printf("You have two choices:\n1-Accept the mission and the risk.\n2-Refuse and accept your fate.\n");
+
+    int choice = 0;
+    scanf("%d", &choice);
+    while(choice != 1 && choice != 2)
+    {
+        printf("Pick again:");
+        scanf("%d", &choice);
+    }
+
+    if(choice == 1)
+    {
+        printf("Welcome to your first mission. Glad you made the hard choice and decided to help others.\n");
+        printf("while walking through the city you find three abandonded buildings.\n"
+        "1-Pharmacy\n2-Police station\n3-Supermarket\nPick one to search:");
+        
+        int buildingChoice = 0;
+        scanf("%d", &buildingChoice);
+        while(buildingChoice != 1 && buildingChoice != 2 && buildingChoice !=3)
+        {
+            printf("Pick again:");
+            scanf("%d", &choice);
+        }
+
+        char* loot[5] = {"Bandage", "knife", "Pistol", "Food", "Medicine"};
+
+        int randomNumber = rand() % 5;
+        char* playerLoot = loot[randomNumber]; 
+
+        printf("While searching the building you have found %s. WOW YOU ARE LUCKY.\n", playerLoot);
+
+        printf("However shorty after you start hearing someone screaming really loud. It sounds like they are being attacked and need your help ASAP."
+        " What will you do?\n1-Will you go help and put your life in danger for a stranger?\n2-Will you ignore the screams and continue searching for supplies.\n");
+        int helpingChoice = 0;
+        scanf("%d", &helpingChoice);
+        while(helpingChoice != 1 && helpingChoice != 2)
+        {
+            printf("Pick again:");
+            scanf("%d", &helpingChoice);
+        }
+
+        if(helpingChoice == 1)
+        {
+            printf("While helping the stranger. You find yourself surronded by more infected and the stranger is badly injured\n"
+            "Your only choice is to carry them and make a run for it!!!\n");
+
+            printf("Wow congrats, You managed to make it to a safe house and you managed to make a new ally. However, you got injured during your escape\n Sadly you have succumbed to your injuries!!!\n");
+
+			printf("The main feature that makes my program unique. Is that I added specs such as HP where if it reaches 0 you will die and your story will end\n");
+			return;
+        }
+        else if(helpingChoice == 2)
+        {
+            printf("After ignoring the screams. You keep looting, but however something is making creepy noises in the room next door.\n");
+            act1Version();
+        }
+    }
+    else if(choice == 2)
+    {
+        printf("Game over. You died because you got shot by your collegue after you got bit by a zombie.\n");
+
+		printf("The main feature that makes my program unique. Is that I added specs such as HP where if it reaches 0 you will die and your story will end\n");
+        return;
+    }
+
+}
+void act1Version(void)
+{
+    printf("So you decided to go investigate the noise\n While walking through the hall way, you take a right turn and into the room\n");
+    printf("You pause!!!\n THE CREEPY SOUND WAS FROM YOUR OLD FRIEND WHO GOT ATTACKED A WEEK EARLIER!!!\n he has turned into a zombie :(\n");
+    printf("Both of you lock eyes and he starts running towards you!!! WHAT WILL YOU DO?\n"
+    " 1-Run\n 2-Attack\n");
+
+    int choice = 0;
+    scanf("%d", &choice);
+    while(choice != 1 && choice != 2)
+    {
+        printf("Pick again:");
+        scanf("%d", &choice);
+    }
+
+    if(choice == 1) 
+    {
+        printf("You managed to run to a roof!\n");
+
+        bool playerAlive = true;
+        bool escaping = true;
+
+        int health = 100;
+        int choice;
+
+        while(playerAlive && escaping)
+        {
+            printf("\n=== Rooftop Chase ===\n");
+            printf("Your health: %d\n", health);
+
+            printf("1-Jump to next building\n2-Climb down ladder\n3-Fight infected\n");
+            scanf("%d", &choice);
+            while(choice != 1 && choice != 2)
+            {
+                printf("Pick again:");
+                scanf("%d", &choice);
+            }
+
+            if(choice == 1)
+            {
+                int jump = rand() % 2;
+
+                if(jump == 1)
+                {
+                    printf("You successfully jumped!\n");
+                    printf("You escaped the infected!\n");
+
+                    escaping = false;
+                }
+                else
+                {
+                    printf("You almost fell!\n");
+                    health -= 20;
+                }
+            }
+
+            else if(choice == 2)
+            {
+                printf("You climb down slowly\n");
+
+                int infected = rand() % 2;
+
+                if(infected == 1)
+                {
+                    printf("An infected grabbed you!\n");
+                    health -= 30;
+                }
+                else
+                {
+                    printf("You escaped safely!\n");
+
+                    escaping = false;
+                }
+            }
+
+            else if(choice == 3)
+            {
+                int fight = rand() % 2;
+
+                if(fight == 1)
+                {
+                    printf("You defeated the infected!\n");
+
+                    escaping = false;
+                }
+                else
+                {
+                    printf("The infected injured you!\n");
+                    health -= 25;
+                }
+            }
+
+            if(health <= 0)
+            {
+                playerAlive = false;
+                printf("You died during the chase.\n");
+				
+				return;
+            }
+        }
+        if(playerAlive)
+        {
+            printf("\nAfter escaping the infected, you finally reach the evacuation rooftop.\n");
+            printf("A helicopter arrives just before the infected surround the building.\n");
+
+            printf("You jump into the helicopter as the city disappears behind you.\n");
+            printf("You survived the outbreak... for now.\n");
+        }
+    }
+    else if(choice == 2)
+    {
+        printf("The zombie jumps on you and start biting you furiously\nWhile being courageous enough to face an infected headon, you were once again fooled by your own courage.\n");
+        printf("You cannot do nothing but bleed to death\n");
+        
+        return;
+    }
+}
 
 void nhfun(void)
 {
