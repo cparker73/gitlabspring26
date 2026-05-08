@@ -107,11 +107,7 @@ void nhfun(void);
 void printInitialsAngelM(void);
 
 void dGMyName(void);
-bool pinballPark(int max_player_HP, int max_enemy_HP, int max_numOfPotions);
-bool musicalMadness(int max_player_HP, int max_enemy_HP, int max_numOfPotions);
-bool televisionTroubles(int max_player_HP, int max_enemy_HP, int max_numOfPotions);
-bool laughingLaboratory(int max_player_HP, int max_enemy_HP, int max_numOfPotions);
-bool spaceSpectacle(int max_player_HP, int max_enemy_HP, int max_numOfPotions);
+void petTamagotchi(void);
 
 void showStarterInfo(int choice);
 int jwStory(void);
@@ -566,6 +562,7 @@ int main(int argc, char *argv[])
 			case 60:
 			{
 				dGMyName();
+				petTamagotchi();
 								puts("room60");
                                 break;
 			}
@@ -6717,6 +6714,68 @@ void jkRoom41(void)
                 running = 0;
                 break;
 
+void petTamagotchi(void)
+{
+	srand(time(NULL));
+
+	int petLevel[3] = {50, 50, 50};
+	int option;
+
+	while (1) 
+	{
+
+		printf("\nWelcome to the Wellness Pet Center!\n");
+		printf("Choose an option below\n");
+		printf("1. Feed Pet\n");
+		printf("2. Clean Pet\n");
+		printf("3. Play with Pet\n");
+		printf("4. Have Pet take a nap\n");
+		printf("5. Check Pet Levels\n");
+		printf("6. Exit Pet Wellness Center\n");
+		printf("Enter option\n");
+		scanf("%d", &option);
+
+
+	int randomLevel = rand() % 10 + 1;
+
+	if (option == 1)
+	{
+		petLevel[0] += randomLevel;
+		printf("Your pet was fed! Their hunger improved.");
+	}
+
+	else if (option == 2)
+	{
+		petLevel[1] += randomLevel;
+		printf("Your pet was cleaned. Their happiness increased");
+	}
+
+	else if (option == 3)
+	{
+		petLevel[1] += randomLevel;
+		printf("You played with your pet. Their happiness increased!");
+	}
+
+	else if (option == 4)
+	{
+		petLevel[2] += randomLevel;
+		printf("Your pet took a nap their energy increased!");
+	}
+
+	else if (option == 5)
+	{
+		printf("Hunger: %d\n", petLevel[0]);
+		printf("Happiness: %d\n", petLevel[1]);
+		printf("Energy: %d\n", petLevel[2]);
+	}
+	
+	else if (option == 6) 
+	{
+		printf("Leaving Wellness Center ...");
+		break;
+	}
+
+}
             default:
                 printf("Invalid choice.\n");
         }
