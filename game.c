@@ -60,6 +60,8 @@ void printStudent30(void);
 void gameroom30(void);
 
 void printInitialsAjewett(void);
+void startRoom9(void);
+
 void jgFun(void);
 void room58SM(void);
 int getLitCount58SM(int candles[]);
@@ -169,8 +171,10 @@ int main(int argc, char *argv[])
 			}
 			case 9:
 			{
-				puts("room9");
+				puts("room9 ");
 				printInitialsAjewett();
+				startRoom9();
+				printf("And with that you exit room 9.\n");
 				break;
 			}
 			case 10:
@@ -2378,6 +2382,282 @@ void printInitialsAjewett(void)
 {
 	printf("AJ\n");
 }
+
+void startRoom9(void)
+{
+	char* itemNames[] = {"Loaf of Bread", "Helium Tank", "Box Fan", "Number 1 Balloon"};
+	double itemPrices[] = {1.25, 30.00, 19.00, 5.00};
+	int NUM_OF_ITEMS = 4; //Length of the array, change when array modified.
+	double money = 5.25;
+	int option = -1; //For figuring out which option the user chose
+	
+	////////////////////////////
+	//Getting to the game show//
+	////////////////////////////
+
+	printf("You are on your way to a price guessing game show, where you intend to win as much money as possible.\n");
+	printf("You currently have $%lf\n", money);
+	printf("In order to get to the game show, you have two options: \n1. Walk directly to the game show\n2. Take the bus to the store to buy a snack and then to the game show ($1.75).\n");
+	printf("Pick an option: ");
+	scanf("%d", &option);
+
+	while(option < 1 || option > 2)
+	{
+		printf("Invalid option, pick 1 or 2: ");
+		scanf("%d", &option);
+	}
+
+	if(option == 1)
+	{
+		printf("You decide to walk directly to the game show, and on the way you find a person asking for money\n\n");
+		printf("Person: \"Hello, do you think you could spare $1.25 for me? I want to go to the store and buy something to eat.\"\n");
+		printf("What do you do?\n1. Give him the money and ask him what he is going to buy\n");
+		printf("2. Give him the money without asking any questions\n3. Don't give him the money\n");
+		printf("Pick an option: ");
+		scanf("%d", &option);
+
+		while(option < 1 || option > 3)
+		{
+			printf("Invalid option, pick 1, 2, or 3: ");
+			scanf("%d", &option);
+		}
+
+		if(option == 1)
+		{
+			printf("Person: \"Thank you friend, I am going to the store to buy a loaf of bread.\"\n");
+			printf("You feel like you should remember this\n"); //Answer to one of the questions
+			money -= 1.25;
+		}
+		else if(option == 2)
+		{
+			printf("Person: \"Thank you friend, I appreciate it.\"\n");
+			printf("You get a strange feeling that asking what he was going to buy could have helped you.\n");
+			money -= 1.25;
+		}
+		else if(option == 3)
+		{
+			printf("You decide to walk away, as you hardly have money to spare right now.\n");
+		}
+
+		printf("You have arrived to the game show on time\n\n");
+	}
+	else if(option == 2)
+	{
+		money -= 1.75; //Bus fare
+		printf("The bus arrives roughly on time, and you take the bus to a local store\n");
+		printf("When you enter the store, you wonder if you should not only buy a snack, but possibly a drink as well. Your options are: \n");
+		printf("1. Buy just a snack ($1.25)\n2. Buy a snack and drink ($2.60)\n3. Leave\n");
+		printf("Pick an option: ");
+		scanf("%d", &option);
+
+		while(option < 1 || option > 3)
+		{
+			printf("Invalid option, pick either 1, 2, or 3: ");
+			scanf("%d", &option);
+		}		
+
+		//Generate 2 seperate items that the user can find the price for in the store.
+		//Also make sure that both are not the same item
+		int item1 = -1;
+		int item2 = -1;
+		while(item1 == item2)
+		{
+			item1 = rand() % NUM_OF_ITEMS;
+			item2 = rand() % NUM_OF_ITEMS;
+		}
+
+		if(option == 1)
+		{
+			printf("You decide to buy just a snack.\n");
+			money -= 1.25;
+			printf("While on your way to buy a snack, you spot an item and get a strange feeling that you should remember it: \n");
+			printf("%s: $%lf\n", itemNames[item1], itemPrices[item1]);
+		}
+		else if(option == 2)
+		{
+			printf("You decide to buy a snack and a drink.\n");
+			money -= 2.60;
+			printf("While on your way to buy a snack and drink, you spot 2 items and get a strange feeling that you should remember them: \n");
+			printf("%s: $%lf\n", itemNames[item1], itemPrices[item1]);
+			printf("%s: $%lf\n", itemNames[item2], itemPrices[item2]);
+		}
+		else if(option == 3)
+		{
+			printf("You decide to leave without buying anything, and think to yourself that you should have just walked if you didn't plan to go to the store.\n");
+		}
+
+		printf("You leave the store, and get on the bus to the game show.\n");
+		printf("After a short while, you arrive at the game show on time.\n\n");
+	}
+
+	/////////////////////
+	//Game Show Section//
+	/////////////////////
+	
+	double currentEarnings = 0.0;
+
+	printf("After entering the game show, the announcer greets you and begins the show.\n");
+	printf("Announcer: \"Welcome Everybody! Today we will be playing a price guessing game!\"\n");
+	printf("Announcer: \"The rules are as follows:\n1. Getting within 1/4 of the price of an item will win you $10,");
+	printf(" and getting the exact price of the item will win you $15.\n");
+	printf("2. If you get a question wrong, you do not lose your current winnings, except in the case of rule 3.\n");
+	printf("3. Once you get to the last question, you can decide to try double or nothing, where getting within 1/4 of the item will");
+	printf(" double the amount of money you earn, getting the exact amount will quadruple it, but getting the question wrong will lead to a loss of all of your earnings!\"\n\n");
+
+	int numberOfQuestions = 0;
+	printf("Announcer: \"Now, would you like to play a game with 3 or 4 questions?\"\n1. 3 questions\n2. 4 questions\n");
+	printf("Pick an option: ");
+	scanf("%d", &option);
+
+	while(option < 1 || option > 2)
+	{
+		printf("Invalid option, pick 1 or 2: ");
+		scanf("%d", &option);
+	}
+
+	if(option == 1)
+	{
+		numberOfQuestions = 3;
+	}
+	else if(option == 2)
+	{
+		numberOfQuestions = 4;
+	}
+
+	////////
+	//Game//
+	////////
+	
+	int questionIndex[numberOfQuestions]; //Array of the order in which each index will be asked
+	
+
+	//Even though this loop is not needed for 4 questions, it will still make it so that the order is random.
+	int i;
+	for(i = 0; i < numberOfQuestions; i++)
+	{
+		questionIndex[i] = rand() % NUM_OF_ITEMS;
+		int j;
+		int alreadyPresent = 0; //Checking if the index is already in the array
+		for(j = 0; j < i; j++)
+		{
+			if(questionIndex[j] == questionIndex[i])
+			{
+				alreadyPresent = 1;
+			}
+		}
+
+		if(alreadyPresent)
+		{
+			i--; //If the value is already present, loop through the given i one more time.
+		}
+	}
+
+	for(i = 0; i < numberOfQuestions - 1; i++) //Loop excludes the last question so that a double or nothing can be done.
+	{
+		double guess;
+		double margin = itemPrices[questionIndex[i]]/4;
+		printf("Announcer: \"For question %d: how much does a(n) %s cost?\"\n", i+1, itemNames[questionIndex[i]]);
+		printf("Your Guess: ");
+		scanf("%lf", &guess);
+		
+		if(guess == itemPrices[questionIndex[i]])
+		{
+			printf("Announcer: \"Congratulations! Your guess is exactly correct! You get $15!\"\n");
+			currentEarnings += 15.0;
+		}
+		else if(guess > itemPrices[questionIndex[i]] - margin && guess < itemPrices[questionIndex[i]] + margin)
+		{
+			printf("Announcer: \"Congratulations! Your guess is within the margin, so you get $10.\"\n");
+			printf("Announcer: \"The price was $%lf.\"\n", itemPrices[questionIndex[i]]);
+			currentEarnings += 10.0;
+		}
+		else
+		{
+			printf("Announcer: \"Unfortunately your guess was off, so you don't get anything.\"\n");
+			printf("Announcer: \"The price was $%lf.\"\n", itemPrices[questionIndex[i]]);
+		}
+
+	}
+	
+	int doubleOrNothing = 0;
+	printf("Announcer: \"We are coming up on the last question, would you like to double or nothing it?\"\n");
+	printf("1. Yes\n2. No\nPick an option: ");
+	scanf("%d", &option);
+
+	while(option < 1 || option > 2)
+	{
+		printf("Invalid option, pick 1 or 2: ");
+		scanf("%d", &option);
+	}
+	if(option == 1)
+	{
+		printf("You decide to double or nothing it\n");
+		doubleOrNothing = 1;
+	}
+	else
+	{
+		printf("You decide not to double or nothing it\n");
+	}
+
+	double guess;
+	i = numberOfQuestions - 1;
+	double margin = itemPrices[questionIndex[i]]/4;
+	printf("Announcer: \"For question %d: how much does a(n) %s cost?\"\n", i+1, itemNames[questionIndex[i]]);
+        printf("Your Guess: ");
+        scanf("%lf", &guess);
+
+        if(guess == itemPrices[questionIndex[i]])
+        {
+                printf("Announcer: \"Congratulations! Your guess is exactly correct! ");
+		if(doubleOrNothing)
+		{
+			printf("Your earnings will be quadrupled!\"\n");
+			currentEarnings *= 4;
+		}
+		else
+		{
+			printf("You get $15!\"\n");
+                	currentEarnings += 15.0;
+		}
+        }
+        else if(guess > itemPrices[questionIndex[i]] - margin && guess < itemPrices[questionIndex[i]] + margin)
+        {
+                printf("Announcer: \"Congratulations! Your guess is within the margin, ");
+                if(doubleOrNothing)
+		{
+			printf("so your current earnings will be doubled!\"\n");
+			currentEarnings *= 2;
+		}
+		else
+		{
+			printf("so you get $10.\"\n");
+			currentEarnings += 10.0;
+		}
+		printf("Announcer: \"The price was $%lf.\"\n", itemPrices[questionIndex[i]]);
+        }
+        else
+        {
+                printf("Announcer: \"Unfortunately your guess was off, ");
+		if(doubleOrNothing)
+		{
+			printf("so you lose everything! I'm sorry, hopefully you have better luck next time.\"\n");
+			currentEarnings = 0.0;
+		}
+		else
+		{
+			printf("so you don't get anything.\"\n");
+		}
+                printf("Announcer: \"The price was $%lf.\"\n", itemPrices[questionIndex[i]]);
+        }
+
+	money += currentEarnings;
+
+	printf("Announcer: \"And that concludes our game! you are walking away with $%lf. I hope to see you again soon!\"\n", currentEarnings);
+
+	printf("After the game show, you end the day with a total of $%lf.\n", money);
+
+}
+
 
 void jgFun(void)
 {
